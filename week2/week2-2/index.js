@@ -146,6 +146,11 @@ const saveInfo = function saveEnteredInfoToList() {
     '.add-list__input input[type="text"]'
   ).value;
 
+  if (isNaN(amount) || amount <= 0 || location.trim() === "") {
+    alert("금액과 내용을 입력하세요.");
+    return; // 입력이 유효하지 않으면 함수 종료
+  }
+
   const newList = {
     category: selectedCategory,
     location: location,
