@@ -13,7 +13,7 @@
     <header class="header">
       <h1>빵빵이의 가계부</h1>
     </header>
-    <main>
+    <main class="main">
       <section class="total">
         <div class="total__sum">
           <p class="total__sum__title">나의 자산</p>
@@ -22,11 +22,15 @@
         <div class="total__detail">
           <div class="total__detail__item">
             <div class="total__detail__item__plus">+</div>
-            <p class="total__detail__item__plus total__detail__item__plus__num"></p>
+            <p
+              class="total__detail__item__plus total__detail__item__plus__num"
+            ></p>
           </div>
-          <div class="total__detail__item"> 
+          <div class="total__detail__item">
             <div class="total__detail__item__minus">-</div>
-            <p class="total__detail__item__minus total__detail__item__minus__num"></p>
+            <p
+              class="total__detail__item__minus total__detail__item__minus__num"
+            ></p>
           </div>
         </div>
       </section>
@@ -49,10 +53,15 @@
             </div>
           </div>
         </div>
-        <ul class="detail__list">
-        </ul>
+        <ul class="detail__list"></ul>
       </section>
+      <div class="modal">
+        <p>삭제하시겠습니까?</p>
+        <button class="modal__btn modal__yes">예</button>
+        <button class="modal__btn modal__no">취소</button>
+      </div>
     </main>
+    <div class="backdrop"></div>
     <section class="add-list">
       <h2>내역 추가</h2>
       <div class="detail__header__sort">

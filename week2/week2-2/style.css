@@ -1,3 +1,7 @@
+.main {
+  position: relative;
+}
+
 .header {
   width: 100%;
   padding: 2rem 0;
@@ -13,7 +17,7 @@
   width: 70%;
   padding: 2rem 0;
   margin: 3rem auto;
-  border: .3rem solid var(--primary-color);
+  border: 0.3rem solid var(--primary-color);
   border-radius: 1rem;
   text-align: center;
 }
@@ -53,7 +57,7 @@
 .total__detail__item div {
   width: 2rem;
   height: 2rem;
-  border: .1rem solid currentColor;
+  border: 0.1rem solid currentColor;
   border-radius: 50%;
   line-height: 2rem;
   text-align: center;
@@ -74,7 +78,7 @@
 .detail {
   width: 100%;
   padding: 3rem 0;
-  border-top: .1rem solid var(--primary-color);
+  border-top: 0.1rem solid var(--primary-color);
 }
 
 .detail__date {
@@ -95,7 +99,7 @@
   justify-content: space-between;
   width: 100%;
   padding: 2rem;
-  border-bottom: .1rem solid var(--primary-color);
+  border-bottom: 0.1rem solid var(--primary-color);
 }
 
 .detail__header__title {
@@ -120,9 +124,9 @@
 .detail__header__sort__item input {
   width: 4.8rem;
   height: 2.2rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   background-color: var(--font-color);
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .detail__header__sort__item input:hover {
@@ -198,8 +202,8 @@
 
 .detail__list__item__delete {
   position: absolute;
-  top: .2rem;
-  right: .6rem;
+  top: 0.2rem;
+  right: 0.6rem;
   cursor: pointer;
 }
 
@@ -209,6 +213,28 @@
 
 .spending {
   color: var(--red);
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: none;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  height: 50vh;
+  color: black;
+  background-color: #98d52d;
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+}
+
+.modal__btn {
+  padding: 2rem;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
 .add-list {
@@ -223,6 +249,7 @@
   height: 70vh;
   background-color: #555;
   z-index: 1000;
+  transition: transform 0.3s ease;
 }
 
 .add-list__inputs {
@@ -267,6 +294,16 @@
   cursor: pointer;
 }
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -285,14 +322,14 @@
 .footer__btn {
   width: 4rem;
   height: 4rem;
-  border: .1rem solid var(--bg-color);
+  border: 0.1rem solid var(--bg-color);
   border-radius: 50%;
   font-size: 3rem;
   line-height: 4rem;
   text-align: center;
   color: var(--bg-color);
   cursor: pointer;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .footer__btn:hover {
@@ -301,7 +338,7 @@
 }
 
 .footer__btn:active {
-  border: .1rem solid #888;
+  border: 0.1rem solid #888;
   background-color: #888;
 }
 
@@ -309,7 +346,7 @@
 @media screen and (max-height: 46.875em) and (min-width: 50rem) {
   .header {
     font-size: 2.4rem;
-    padding: .5rem;
+    padding: 0.5rem;
   }
 
   .total {
@@ -338,7 +375,7 @@
     height: 2rem;
     line-height: 2rem;
   }
-  
+
   .total__detail__item p {
     font-size: 2rem;
   }
@@ -356,7 +393,7 @@
     padding: 0 3rem;
     margin-top: 1.5rem;
   }
-  
+
   .detail__list__item__category {
     text-align: center;
   }
@@ -366,7 +403,7 @@
 @media screen and (max-width: 28.125em) {
   .header {
     font-size: 2.4rem;
-    padding: .5rem;
+    padding: 0.5rem;
   }
 
   .total {
@@ -393,7 +430,7 @@
     height: 1.6rem;
     line-height: 1.6rem;
   }
-  
+
   .total__detail__item p {
     font-size: 1.6rem;
   }
@@ -411,10 +448,10 @@
     padding: 0 3rem;
     margin-top: 1.5rem;
   }
-  
+
   .detail__list__item {
     flex-direction: column;
-    gap: .5rem;
+    gap: 0.5rem;
     padding: 1rem;
   }
 
@@ -424,7 +461,7 @@
 
   .detail__list__item__history {
     flex-direction: column;
-    gap: .5rem;
+    gap: 0.5rem;
     justify-content: center;
   }
 }

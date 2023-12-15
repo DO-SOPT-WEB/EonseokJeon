@@ -44,6 +44,12 @@ const incomeSelect = document.getElementById("select-income");
 const spendingSelect = document.getElementById("select-spending");
 const saveInfoButton = document.getElementById("save-info");
 
+const modal = document.querySelector(".modal");
+const modalYes = document.querySelector(".modal__yes");
+const modalNo = document.querySelector(".modal__no");
+
+const backdrop = document.querySelector(".backdrop");
+
 let totalBalanceAmount = INIT_BALANCE; // 굳이 왜 이렇게?
 let totalIncomeAmount = 0;
 let totalSpendingAmount = 0;
@@ -161,45 +167,61 @@ const saveInfo = function saveEnteredInfoToList() {
 };
 
 const deleteList = function deleteOneListItemWithXButton(event) {
-  const deleteItem = event.target.closest(".detail__list__item");
-  if (deleteItem) {
-    const historyPrice = deleteItem.querySelector(
-      ".detail__list__item__history__price"
-    );
-    const income = historyPrice.classList.contains("income");
+  modal.style.display = "flex";
 
-    if (income) {
-      totalBalanceAmount -= parseFloat(
-        historyPrice.textContent.replace(/[^0-9.-]+/g, "")
+  modalYes.addEventListener("click", () => {
+    const deleteItem = event.target.closest(".detail__list__item");
+    if (deleteItem) {
+      const historyPrice = deleteItem.querySelector(
+        ".detail__list__item__history__price"
       );
-      totalIncomeAmount -= parseFloat(
-        historyPrice.textContent.replace(/[^0-9.-]+/g, "")
-      );
-    } else {
-      totalBalanceAmount += parseFloat(
-        historyPrice.textContent.replace(/[^0-9.-]+/g, "")
-      );
-      totalSpendingAmount += parseFloat(
-        historyPrice.textContent.replace(/[^0-9.-]+/g, "")
-      );
+      const income = historyPrice.classList.contains("income");
+
+      if (income) {
+        totalBalanceAmount -= parseFloat(
+          historyPrice.textContent.replace(/[^0-9.-]+/g, "")
+        );
+        totalIncomeAmount -= parseFloat(
+          historyPrice.textContent.replace(/[^0-9.-]+/g, "")
+        );
+      } else {
+        totalBalanceAmount += parseFloat(
+          historyPrice.textContent.replace(/[^0-9.-]+/g, "")
+        );
+        totalSpendingAmount += parseFloat(
+          historyPrice.textContent.replace(/[^0-9.-]+/g, "")
+        );
+      }
+
+      totalBalance.textContent = totalBalanceAmount.toLocaleString("ko-KR");
+      totalIncome.textContent = totalIncomeAmount.toLocaleString("ko-KR");
+      totalSpending.textContent = totalSpendingAmount.toLocaleString("ko-KR");
+
+      deleteItem.remove();
+      modal.style.display = "none";
     }
-
-    totalBalance.textContent = totalBalanceAmount.toLocaleString("ko-KR");
-    totalIncome.textContent = totalIncomeAmount.toLocaleString("ko-KR");
-    totalSpending.textContent = totalSpendingAmount.toLocaleString("ko-KR");
-
-    deleteItem.remove();
-  }
+  });
+  modalNo.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
 };
 
 const openModal = function openModalToAddHistoryList() {
   const addModal = document.querySelector(".add-list");
+  addModal.style.transform = "translate(0, 150%)";
   addModal.style.display = "flex";
+  backdrop.style.display = "inline-block";
+
+  setTimeout(() => {
+    addModal.style.transition = "transform 0.3s ease";
+    addModal.style.transform = "translate(0, 0)";
+  }, 0);
 };
 
 const closeModal = function openModalToAddHistoryList() {
   const addModal = document.querySelector(".add-list");
   addModal.style.display = "none";
+  backdrop.style.display = "none";
 };
 
 const main = () => {
